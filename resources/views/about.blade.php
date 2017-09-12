@@ -1,12 +1,8 @@
 @extends('layouts.app')
 
-@section('title')
-About - 
-@endsection
+@section('title', 'About - ')
 
-@section('header_image')
-img/about-bg.jpg
-@endsection
+@section('header_image', 'img/about-bg.jpg')
 
 @section('header')
 <div class="page-heading">

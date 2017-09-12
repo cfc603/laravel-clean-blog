@@ -49,7 +49,7 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('@yield('header_image')')">
+    <header class="masthead" style="background-image: url(@yield('header_image'))">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">

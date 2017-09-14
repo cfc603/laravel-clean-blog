@@ -59,6 +59,9 @@
       </div>
     </header>
 
+    <!-- Messages -->
+    @include('flash::message')
+
     <!-- Main Content -->
     @yield('content')
 

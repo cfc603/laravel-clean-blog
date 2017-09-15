@@ -20,6 +20,9 @@
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/clean-blog.min.css') }}" rel="stylesheet">
 
+    <!-- Page Level styles -->
+    @yield('page_css')
+
   </head>
 
   <body>

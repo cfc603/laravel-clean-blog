@@ -17,3 +17,6 @@ Route::view('/about', 'about')->name('about');
 // Contact
 Route::get('/contact', 'ContactController@index')->name('contact');
 Route::post('/contact', 'ContactController@submit')->name('submit_contact');
+
+// Post
+Route::resource('post', 'PostController');

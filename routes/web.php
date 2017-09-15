@@ -11,7 +11,7 @@
 |
 */
 
-Route::view('/', 'home')->name('home');
+Route::view('/', 'home', ['posts' => App\Post::paginate(5)])->name('home');
 Route::view('/about', 'about')->name('about');
 
 // Contact

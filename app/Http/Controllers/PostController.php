@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -120,5 +121,8 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+        Storage::disk('public')->delete($post['image']);
+        $post->delete();
+        return redirect()->route('posts.index');
     }
 }

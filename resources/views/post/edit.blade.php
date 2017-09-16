@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@include('post._styling')
+@include('layouts._no_header_img_styling')
 
 @section('content')
 <div class="container" id="content">

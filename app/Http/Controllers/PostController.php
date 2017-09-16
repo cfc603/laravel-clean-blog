@@ -38,6 +38,25 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'title' => 'min:2',
+            'subtitle' => 'min:2',
+            'body' => 'min:2',
+            'image' => 'required',
+            'live' => 'boolean',
+        ]);
+
+        $image_path = $request->file('image')->store('post_images', 'public');
+
+        $post = Post::create([
+            'title' => $request->title,
+            'subtitle' => $request->subtitle,
+            'body' => $request->body,
+            'image' => $image_path,
+            'live' => $request->live,
+        ]);
+
+        return redirect()->route('posts.show', ['post' => $post['id']]);
     }
 
     /**

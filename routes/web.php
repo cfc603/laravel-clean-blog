@@ -11,7 +11,9 @@
 |
 */
 
-Route::view('/', 'home', ['posts' => App\Post::paginate(5)])->name('home');
+Route::view(
+    '/', 'home', ['posts' => App\Post::where('live', true)->orderBy('created_at', 'desc')->paginate(5)]
+)->name('home');
 Route::view('/about', 'about')->name('about');
 
 // Contact

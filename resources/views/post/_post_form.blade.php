@@ -8,7 +8,7 @@
   </div>
 @endif
 @if (isset($post))
-  {!! Form::model($post, ['route' => 'posts.store', 'files' => true]) !!}
+  {!! Form::model($post, ['route' => ['posts.update', $post->id], 'files' => true, 'method' => 'put']) !!}
 @else
   {!! Form::open(['route' => 'posts.store', 'files' => true]) !!}
 @endif
@@ -42,15 +42,17 @@
       )
     !!}
   </div>
-  <div class="form-group static-label-form-group controls">
-    {!! Form::label('Image') !!}
-    {!!
-      Form::file(
-        'image',
-        ['required']
-      )
-    !!}
-  </div>
+  @if (!isset($post))
+    <div class="form-group static-label-form-group controls">
+      {!! Form::label('Image') !!}
+      {!!
+        Form::file(
+          'image',
+          ['required']
+        )
+      !!}
+    </div>
+  @endif
   <div class="form-group static-label-form-group controls">
     {!! Form::label('Live') !!}
     {!!
@@ -64,10 +66,18 @@
   </div>
   <br>
   <div class="form-group">
-    {!!
-      Form::submit(
-        'Create', ['class'=>'btn btn-secondary']
-      )
-    !!}
+    @if (isset($post))
+      {!!
+        Form::submit(
+          'Edit', ['class'=>'btn btn-secondary']
+        )
+      !!}
+    @else
+      {!!
+        Form::submit(
+          'Create', ['class'=>'btn btn-secondary']
+        )
+      !!}
+    @endif
   </div>
 {!! Form::close() !!}

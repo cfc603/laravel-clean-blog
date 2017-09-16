@@ -2,7 +2,7 @@
 
 @section('title', 'About - ')
 
-@section('header_image', 'img/about-bg.jpg')
+@section('header_image', '/img/about-bg.jpg')
 
 @section('header')
 <div class="page-heading">

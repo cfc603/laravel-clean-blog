@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('header_image', 'img/home-bg.jpg')
+@section('header_image', '/img/home-bg.jpg')
 
 @section('header')
 <div class="site-heading">

@@ -11,9 +11,7 @@
 |
 */
 
-Route::view(
-    '/', 'home', ['posts' => App\Post::where('live', true)->orderBy('created_at', 'desc')->paginate(5)]
-)->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::view('/about', 'about')->name('about');
 
 // Auth

@@ -17,6 +17,13 @@
         <div class="post-preview">
           <a href="{{ route('posts.show', ['post' => $post]) }}">
             <h2 class="post-title">
+              @auth
+                @if ($post['live'])
+                  (Live) 
+                @else
+                  (Draft) 
+                @endif
+              @endauth
               {{ $post->title }}
             </h2>
             <h3 class="post-subtitle">
@@ -24,6 +31,20 @@
             </h3>
           </a>
           <p class="post-meta">Posted on {{ date('F d, Y', strtotime($post->created_at)) }}</p>
+          @auth
+            <p class="post-meta">
+              <a href="{{ route('posts.edit', ['post' => $post]) }}">Edit Post</a>
+              <a href="{{ route('posts.destroy', ['post' => $post]) }}" class="pull-right"
+                onclick="event.preventDefault();
+                         document.getElementById('deleteForm{{ $post->id }}').submit();">
+                       Delete Post
+              </a>
+              <form id="deleteForm{{ $post->id }}" method="POST" action="{{ route('posts.destroy', ['post'=>$post]) }}" style="display: none;">
+                <input name="_method" type="hidden" value="DELETE">
+                {{ csrf_field() }}
+              </form>
+            </p>
+          @endauth
         </div>
         <hr>
       @endforeach

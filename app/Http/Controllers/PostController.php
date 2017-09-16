@@ -93,6 +93,22 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         //
+        $this->validate($request, [
+            'title' => 'min:2',
+            'subtitle' => 'min:2',
+            'body' => 'min:2',
+            'live' => 'boolean',
+        ]);
+
+        $post->fill([
+            'title' => $request->title,
+            'subtitle' => $request->subtitle,
+            'body' => $request->body,
+            'live' => $request->live,
+        ]);
+        $post->save();
+
+        return redirect()->route('posts.show', ['post' => $post]);
     }
 
     /**
